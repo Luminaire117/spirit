@@ -37,6 +37,21 @@ TIME_ZONES = ['ACT', 'ACDT', 'ACST', 'ADT', 'AEDT',
               'UTC-8', 'UTC-9', 'UTC-10', 'UTC-11', 'UTC-12',
               'UYST', 'UYT', 'VET', 'WDT', 'WEST', 'WET', 'WST', 'YST', 'YDT']
 
+RAID_ORDER = {
+                2693136600: 'unknown please update',
+                2693136601: 'baths, dogs, gauntlet',
+                2693136602: 'unknown please update',
+                2693136603: 'unknown please update',
+                2693136604: 'gauntlet, baths, dogs',
+                2693136605: 'unknown please update',
+                2449714930: 'unknown please update',
+                3446541099: 'unknown please update',
+                3879860661: 'baths, dogs, gauntlet',
+                417231112: 'dogs, gauntlet, baths',
+                757116822: 'gauntlet, baths, dogs',
+                1685065161: 'gauntlet, dogs, baths'
+                }
+
 RELEASE_DATES = [
                  ("PC Beta", datetime(2017, 8, 28, tzinfo=pytz.timezone('US/Pacific'))),
                  ("Console Release", datetime(2017, 9, 6, tzinfo=pytz.timezone('US/Pacific'))),

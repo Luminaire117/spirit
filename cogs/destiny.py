@@ -181,6 +181,30 @@ class Destiny:
 
     @commands.command()
     @commands.cooldown(rate=2, per=5, type=commands.BucketType.user)
+    async def raid(self, ctx):
+        """Displays raid order"""
+        manager = MessageManager(self.bot, ctx.author, ctx.channel, ctx.prefix, [ctx.message])
+        await ctx.channel.trigger_typing()
+
+        try:
+            weekly = await self.destiny.api.get_public_milestones()
+        except pydest.PydestException as e:
+            await manager.say("Sorry, I can't seem to get the raid info right now")
+            return await manager.clear()
+
+        if weekly['ErrorCode'] != 1:
+            await manager.say("Sorry, I can't seem to get the raid info right now")
+            return await manager.clear()
+
+        raid_hash = weekly['Response']['3660836525']['availableQuests'][0]['activity']['activityHash']
+        raid_order = constants.RAID_ORDER[raid_hash]
+
+        await manager.say(raid_order)
+        await manager.clear()
+
+
+    @commands.command()
+    @commands.cooldown(rate=2, per=5, type=commands.BucketType.user)
     async def loadout(self, ctx):
         """Display your last played character's loadout
 
